@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let numOfPlays = 0;
+        let choices = ['Rock', 'Paper', 'Scissors'];
+        let compChoice = '';
+        let playerSelection = '';
+        humScore = 0;
+        compScore= 0;
+
+        function humanPlay(){
+            playerSelection = prompt("Please choose Rock, Paper, or Scissors: "); 
+            console.log(playerSelection);
+            return playerSelection;
+        }
+
+        function computerPlay(){
+            compChoice = choices[Math.floor(Math.random()*3)];
+            console.log(compChoice);
+            return compChoice;
+        }
+
+        function playRound(playerSelection, compChoice){
+            if(playerSelection === compChoice){
+                console.log("Tie! Go again.");
+            }else{
+                if((playerSelection === choices[0] && compChoice === choices[1]) || (playerSelection === choices[1] && compChoice === choices[3])){
+                    compScore += 1;
+                }else{
+                    humScore += 1;
+                }
+            };
+            console.log(`Score: You (${humScore}) Vs. Computer (${compScore})`);
+        }
+
+        function play(numOfPlays){
+            for(i=1; i <= numOfPlays; i++){
+                console.log("playing round")
+                playRound(humanPlay(), computerPlay()); 
+            }
+        }
+
+        function go(){
+            numOfPlays = parseInt(prompt("How many games would you like to play?: "));
+            play(numOfPlays);
+        }
+
+        go();
+
+    </script>
+</body>
+</html>
